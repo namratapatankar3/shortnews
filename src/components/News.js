@@ -19,6 +19,7 @@ const News = (props) => {
     let response = await fetch(url);
     let data = await response.json()
     setArticles(data.articles)
+    console.log(data.articles)
     setLoading(false)
     setTotalArticles(data.totalResults)
   }
@@ -26,7 +27,7 @@ const News = (props) => {
     update();
   }, [])
   const fetchMoreData = async () => {
-    const url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apikey=826ff8ff9b734100842653dd0dc5027d&page=${page + 1}&pageSize=${props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apikey=${props.api}&page=${page + 1}&pageSize=${props.pageSize}`;
     setPage(page + 1)
     let response = await fetch(url);
     let data = await response.json()
